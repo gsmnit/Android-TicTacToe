@@ -1,11 +1,12 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val selectedButton = view as Button
         var cellID = 0
         when (selectedButton.id) {
-            R.id.button -> cellID = 1
+            R.id.button1 -> cellID = 1
             R.id.button2 -> cellID = 2
             R.id.button3 -> cellID = 3
             R.id.button4 -> cellID = 4
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
         playGame(cellID, selectedButton)
     }
+
     var Player1 = ArrayList<Int>()
     var Player2 = ArrayList<Int>()
     var ActivePlayer = 1
@@ -98,10 +100,19 @@ class MainActivity : AppCompatActivity() {
         }
         if (winner != -1) {
             if (winner == 1) {
-                Toast.makeText(this,"Player 1 win",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Player 1 win",Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this,"Player 2 win",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Player 2 win",Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun restartGame(view : View){
+        setContentView(R.layout.activity_main)
+//        this.recreate();
+    }
+
+    fun startListViewActivity(view : View){
+        startActivity(Intent(this,ListViewActivity::class.java))
     }
 }
