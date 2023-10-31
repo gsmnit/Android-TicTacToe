@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,9 +18,10 @@ import java.util.ArrayList;
 class CustomAdapter implements ListAdapter {
     ArrayList<SubjectData> arrayList;
     Context context;
+
     public CustomAdapter(Context context, ArrayList<SubjectData> arrayList) {
-        this.arrayList=arrayList;
-        this.context=context;
+        this.arrayList = arrayList;
+        this.context = context;
     }
 
     @Override
@@ -36,7 +36,6 @@ class CustomAdapter implements ListAdapter {
 
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
-
     }
 
     @Override
@@ -66,24 +65,24 @@ class CustomAdapter implements ListAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final SubjectData subjectData=arrayList.get(position);
-      if(convertView==null){
-          LayoutInflater layoutInflater = LayoutInflater.from(context);
-          convertView=layoutInflater.inflate(R.layout.list_row, null);
-          convertView.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent i = new Intent(Intent.ACTION_VIEW);
-                  i.setData(Uri.parse(subjectData.Link));
-                  context.startActivity(i);
-              }
-          });
-          TextView tittle=convertView.findViewById(R.id.title);
-          ImageView imag=convertView.findViewById(R.id.list_image);
-          tittle.setText(subjectData.SubjectName);
-          Picasso.get().load(subjectData.Image).into(imag);
+        final SubjectData subjectData = arrayList.get(position);
+        if (convertView == null) {
+            LayoutInflater layoutInflater = LayoutInflater.from(context);
+            convertView = layoutInflater.inflate(R.layout.list_row, null);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(subjectData.Link));
+                    context.startActivity(i);
+                }
+            });
+            TextView tittle = convertView.findViewById(R.id.title);
+            ImageView imag = convertView.findViewById(R.id.list_image);
+            tittle.setText(subjectData.SubjectName);
+            Picasso.get().load(subjectData.Image).into(imag);
 
-      }
+        }
         return convertView;
     }
 
@@ -91,10 +90,12 @@ class CustomAdapter implements ListAdapter {
     public int getItemViewType(int position) {
         return position;
     }
+
     @Override
     public int getViewTypeCount() {
         return arrayList.size();
     }
+
     @Override
     public boolean isEmpty() {
         return false;
