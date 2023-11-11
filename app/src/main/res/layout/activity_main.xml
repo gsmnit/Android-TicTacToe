@@ -99,22 +99,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="restartGame"
+            android:layout_marginEnd="10pt"
             android:text="@string/restart_game"
-            android:background="@color/red"></Button>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_margin="10dp">
+            android:background="@color/green"></Button>
         <Button
             android:id="@+id/startListViewActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="startListViewActivity"
             android:text="@string/start_listviewactivity"
-            android:background="@color/red"></Button>
+            android:background="@color/green"></Button>
     </TableRow>
 
 </TableLayout>
